@@ -1,29 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-/* Fundo aplicado diretamente na página inteira */
+/* Fundo aplicado na tela inteira */
 html, body {
   height: 100%;
   margin: 0;
   background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
   font-family: 'Orbitron', sans-serif;
   color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Estilo principal do conteúdo */
+/* Conteúdo centralizado vertical e horizontalmente */
 #root {
   max-width: 1280px;
-  margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-/* Logo com efeitos futuristas */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  transition: all 300ms ease;
-  filter: drop-shadow(0 0 1em #00f2ff);
+/* Logo com destaque */
+
+
+.logo-banco-luiz-lindo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 2em #00f2ff);
 }
+
 
 .logo:hover {
   filter: drop-shadow(0 0 2em #00f2ff);
@@ -35,12 +41,8 @@ html, body {
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -49,14 +51,15 @@ html, body {
   }
 }
 
-/* Cards com efeito glass e sombra neon */
+/* Card com maior legibilidade e destaque visual */
 .card {
-  padding: 2em;
+  padding: 2.5em;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease-in-out;
+  font-size: 1.3rem;
 }
 
 .card:hover {
@@ -64,9 +67,9 @@ html, body {
   transform: translateY(-5px);
 }
 
-/* Texto com leve brilho */
+/* Texto informativo com brilho e tamanho maior */
 .read-the-docs {
   color: #aaa;
-  font-size: 0.9em;
+  font-size: 1.1rem;
   text-shadow: 0 0 5px #00f2ff;
 }

@@ -7,20 +7,40 @@ function App() {
   const [valor, setValor] = useState<number>(0);
   const [operacao, setOperacao] = useState<'deposito' | 'saque'>('deposito');
   const [saldo, setSaldo] = useState<number>(conta.verSaldo());
+  const [erro, setErro] = useState<string>(''); // 🛑 Mensagem de erro
 
   const realizarOperacao = () => {
+    setErro(''); // Limpa mensagens anteriores
+
+    if (valor <= 0) {
+      setErro('O valor deve ser maior que zero.');
+      return;
+    }
+
     if (operacao === 'deposito') {
       conta.depositar(valor);
     } else {
+      if (valor > conta.verSaldo()) {
+        setErro('Saldo insuficiente para saque.');
+        return;
+      }
       conta.sacar(valor);
     }
+
     setSaldo(conta.verSaldo());
-    setValor(0); // opcional: limpa o campo de valor após a operação
+    setValor(0); // Limpa o campo
   };
 
   return (
-    <div className="App">
+      <div className="App">
+    
+      <h1>Banco Luiz Lindo</h1>
+      <h2>Bem-vindo à sua conta bancária!</h2>
+      <p>Gerencie suas finanças de forma simples e segura.</p>
+
       <h2>Saldo disponível: R$ {saldo}</h2>
+
+      {erro && <p style={{ color: 'red', fontWeight: 'bold' }}>{erro}</p>} {/* 💬 Exibe erro */}
 
       <label>
         Escolha a operação:
